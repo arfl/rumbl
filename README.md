@@ -1,5 +1,5 @@
 # Rumbl
-[](https://codeship.com/projects/169204/status?branch=master)
+![Codeship badge](https://codeship.com/projects/169204/status?branch=master)
 
 To start your Phoenix app:
 
