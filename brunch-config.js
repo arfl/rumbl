@@ -2,7 +2,16 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: "js/app.js"
+      joinTo: {
+        "js/app.js": /^(web\/static\/js)/,
+        "js/vendor.js": /^(web\/static\/js|node_modules)/
+      },
+      order: {
+        before: [
+          "node_modules/jquery/dist/jquery.js",
+          "node_modules/tether/dist/js/tether.js"
+        ]
+      }
 
       // To use a separate vendor.js bundle, specify two files path
       // http://brunch.io/docs/config#-files-
@@ -54,6 +63,11 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/web\/static\/vendor/]
+    },
+    sass: {
+      options: {
+        includePaths: ["node_modules/bootstrap/scss"] // tell sass where to look for files to import
+      }
     }
   },
 
@@ -64,6 +78,12 @@ exports.config = {
   },
 
   npm: {
-    enabled: true
+    enabled: true,
+    static: ["node_modules/bootstrap/dist/js/bootstrap"],
+    globals: {
+      $: 'jquery',
+      jQuery: 'jquery',
+      Tether: 'tether'
+    }
   }
 };
