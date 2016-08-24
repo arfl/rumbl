@@ -10,8 +10,12 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias Rumbl.{Repo, User}
+alias Rumbl.{Repo, User, Category}
 
 Repo.insert(%User{username: "jose", name: "Jose Valim"})
 Repo.insert(%User{username: "redrapids", name: "Brus Red"})
 Repo.insert(%User{username: "cmccord", name: "Chris Cord"})
+
+for category <- ~w(Action Drama Romance Comedy Sci-fi) do
+  Repo.insert!(%Category{name: category})
+end
