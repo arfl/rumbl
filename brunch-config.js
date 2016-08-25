@@ -4,14 +4,8 @@ exports.config = {
     javascripts: {
       joinTo: {
         "js/app.js": /^(web\/static\/js)/,
-        "js/vendor.js": /^(web\/static\/js|node_modules)/
+        "js/vendor.js": /^(web\/static\/vendor|node_modules)/
       },
-      order: {
-        before: [
-          "node_modules/jquery/dist/jquery.js",
-          "node_modules/tether/dist/js/tether.js"
-        ]
-      }
 
       // To use a separate vendor.js bundle, specify two files path
       // http://brunch.io/docs/config#-files-
@@ -79,7 +73,10 @@ exports.config = {
 
   npm: {
     enabled: true,
-    static: ["node_modules/bootstrap/dist/js/bootstrap"],
+    static: ["node_modules/bootstrap/dist/js/bootstrap.js"],
+    aliases: {
+      "bootstrap": "node_modules/bootstrap/dist/js/bootstrap.js"
+    },
     globals: {
       $: 'jquery',
       jQuery: 'jquery',
